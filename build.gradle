@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group = 'by.ivan101454'
+version = '1.0-SNAPSHOT'
+
+compileJava   {
+    sourceCompatibility = '21'
+    targetCompatibility = '21'
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.springframework/spring-context
+    implementation 'org.springframework:spring-context:6.1.12'
+
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'by.ivan101454.Main'
+    }
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+
+    from (configurations.runtimeClasspath.files.collect {zipTree(it)})
+}
+
+test {
+    useJUnitPlatform()
+}
