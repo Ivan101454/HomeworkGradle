@@ -18,9 +18,13 @@ public class Utils {
         } catch (InputException e) {
             throw new RuntimeException(e);
         }
-//        input.size() == 1 ? StringUtils() : {
-
-//        }
+        if (input.size() == 1) {
+            try {
+                StringUtils.isPositiveNumber(input.getFirst().toString());
+            } catch (InputException e) {
+                e.printStackTrace();
+            }
+        }
         List<Double> tempCollect = input.stream().filter(x -> x > 0).collect(Collectors.toList());
         if(input.size() == tempCollect.size()) {
             isPositive = true;
