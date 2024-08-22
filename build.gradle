@@ -27,7 +27,7 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'by.ivan101454.Main'
+        attributes 'Main-Class': 'ru.clevertec.Main'
     }
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
 
