@@ -1,11 +1,17 @@
-package by.ivan101454;
+package ru.clevertec;
 
 
+import ru.clevertec.utils.StringUtils;
+
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        String s = args[0];
-        boolean positiveNumber = StringUtils.isPositiveNumber(s);
-        System.out.println(positiveNumber);
+        String s = String.join("", args);
+        try {
+            StringUtils.isPositiveNumber(s);
+        } catch (InputException e) {
+            e.printStackTrace();
+        }
     }
 }
