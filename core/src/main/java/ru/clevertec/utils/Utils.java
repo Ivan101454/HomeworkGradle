@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Utils {
-    public static boolean isAllPositiveNumbers(String... str) throws InputException {
+    public static boolean isAllPositiveNumbers(String... str) {
         List<Double> input = null;
         boolean isPositive = false;
         try {
