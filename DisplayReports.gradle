@@ -1,15 +1,21 @@
+import org.gradle.testing.jacoco.plugins.JacocoPlugin
 
 class DisplayReportsPlugin implements Plugin<Project> {
+
     @Override
     void apply(Project project) {
-        project.logger.lifecycle("DisplayReportsPlugin applied")
+//        project.logger.lifecycle("DisplayReportsPlugin applied")
+        project.pluginManager.apply(JacocoPlugin)
 
-        project.task('displayReports') {
+        project.tasks.register('displayReports') { task ->
+            task.dependsOn(project.tasks.named('test'))
             doLast {
-                println 'Displaying reports...'
+                println 'call plugin that formed report'
             }
+            task.finalizedBy(project.tasks.named('jacocoTestReport'))
         }
     }
+
 }
 
 apply plugin: DisplayReportsPlugin
