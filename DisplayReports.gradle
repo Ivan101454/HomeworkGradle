@@ -2,7 +2,7 @@ apply plugin: DisplayReportsPlugin
 apply plugin: JacocoPlugin
 apply plugin: JavaPlugin
 
-def myProjects = [':api', ':core']
+def myProjects = [':api']
 myProjects.each {
     evaluationDependsOn it
 }
@@ -21,8 +21,6 @@ class DisplayReportsPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
-//        project.pluginManager.apply(JacocoPlugin)
-//        project.pluginManager.apply(JavaPlugin)
         project.tasks.register('displayReports') { task ->
             task.dependsOn(project.tasks.named('test'))
             doLast {
