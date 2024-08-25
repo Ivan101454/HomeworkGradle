@@ -1,14 +1,21 @@
 plugins {
     id 'java'
     id 'jacoco'
-
 }
 apply from: 'DisplayReports.gradle'
 
 
-group = 'ru.clevertec'
-version = '1.3.5'
-archivesBaseName = 'utils'
+allprojects {
+    apply plugin: 'jacoco'
+
+    group = 'ru.clevertec'
+    version = '1.3.5'
+    archivesBaseName = 'utils'
+}
+
+subprojects {
+
+}
 
 compileJava {
     sourceCompatibility = '21'
@@ -37,11 +44,10 @@ jar {
 
 test {
     useJUnitPlatform()
-//    finalizedBy jacocoTestReport // report is always generated after tests run
 }
 
-displayReports {
-}
+
+
 
 
 

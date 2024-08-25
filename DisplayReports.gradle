@@ -1,12 +1,28 @@
-import org.gradle.testing.jacoco.plugins.JacocoPlugin
+apply plugin: DisplayReportsPlugin
+apply plugin: JacocoPlugin
+apply plugin: JavaPlugin
+
+def myProjects = [':api', ':core']
+myProjects.each {
+    evaluationDependsOn it
+}
+jacocoTestReport {
+    FileTree sourceTree = files().asFileTree
+    FileTree classTree = files().asFileTree
+    myProjects.each {
+        sourceTree += project(it).sourceSets.main.allJava
+        classTree += project(it).sourceSets.main.output.asFileTree
+    }
+    additionalSourceDirs = sourceTree
+    additionalClassDirs = classTree
+}
 
 class DisplayReportsPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
-//        project.logger.lifecycle("DisplayReportsPlugin applied")
-        project.pluginManager.apply(JacocoPlugin)
-
+//        project.pluginManager.apply(JacocoPlugin)
+//        project.pluginManager.apply(JavaPlugin)
         project.tasks.register('displayReports') { task ->
             task.dependsOn(project.tasks.named('test'))
             doLast {
@@ -18,4 +34,5 @@ class DisplayReportsPlugin implements Plugin<Project> {
 
 }
 
-apply plugin: DisplayReportsPlugin
+
+
