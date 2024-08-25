@@ -1,2 +1,5 @@
 rootProject.name = 'HomeworkGradle'
+include 'core'
+include 'api'
+
 

@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(":core")
+    testImplementation 'org.assertj:assertj-core:3.26.3'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+//test {
+//    finalizedBy displayReports
+//}
+//jacocoTestReport {
+//    dependsOn test
+//}
+//
+//displayReports {
+//}
