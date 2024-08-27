@@ -10,12 +10,12 @@ repositories {
 }
 
 dependencies {
-    implementation files('C:\\Users\\user\\.m2\\repository\\ru\\clevertec\\HomeworkGradle\\1.3.5\\utils-1.3.5.jar')
-//    implementation files ('.\\libs\\utils-1.3.5.jar')
+    implementation files (project.rootDir as String + '\\lib\\utils-1.3.5.jar')
     testImplementation 'org.assertj:assertj-core:3.26.3'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
+
 
 test {
     useJUnitPlatform()
